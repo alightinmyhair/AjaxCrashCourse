@@ -9,18 +9,29 @@
     </head>
 <body>
     <button id="button">Get Text File</button>
+    <br><br>
+    <div id="text"></div>
+
     <script>
         document.getElementById('button').addEventListener('click', loadText);
         function loadText(){
             //Create XHR Object
             let xhr = new XMLHttpRequest();
+
             //open - type, url/file, asychronous
-            xhr.open('Get', 'sample.txt', true);
+            xhr.open('Get', 'sample2.txt', true);
 
             xhr.onload = function() {
                 if(this.status == 200){
-                    console.log(this.responseText);
+                    // console.log(this.responseText);
+                    document.getElementById('text').innerHTML = this.responseText;
+                }else if(this.status = 404){
+                    document.getElementById('text').innerHTML = "Not Found";
                 }
+                }
+            //if there is an onload() method, then it is best to have a onerror() method as well
+            xhr.onerror = function(){
+                console.log('Request Error...');
             }
             //Sends request
             xhr.send();
