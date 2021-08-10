@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+    <head>
+        <meta name="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ajax 4 - Ajax & PHP Forms</title>
+    </head>
+<body>
+    <button id="button">Get Name</button>
+</body>
+<script>
+    document.getElementById('button').addEventListener('click', getName);
+
+    function getName(){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'process.php', true);
+
+        xhr.onload = function(){
+            console.log(this.responseText);
+        }
+
+        xhr.send();
+    }
+</script>
+</html>
